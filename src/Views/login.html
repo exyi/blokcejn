@@ -1,0 +1,27 @@
+@viewModel Views.Login.ViewModel
+
+<!DOCTYPE html>
+<html lang="en" xmlns:dot="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Blokčejn</title>
+    <dot:RequiredResource Name="bulma.css" />
+</head>
+<body>
+
+    <p Visible="{value: IsLogged}">
+        Už jsi přihlášený, možná chceš rovnou do <a href="/">aplikace</a>
+    </p>
+
+    <form>
+        <fieldset>
+            <p>
+                <dot:TextBox Text="{value: Name}" placeholder="Jméno týmu" />
+                <dot:TextBox Text="{value: Password}" placeholder="heslo" />
+            </p>
+            <dot:ValidationSummary />
+            <dot:Button Click="{command: Login()}" Text="Login" Enabled="{value: Name.Length > 0}" IsSubmitButton />
+        </fieldset>
+    </form>
+</body>
+</html>

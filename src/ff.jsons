@@ -1,0 +1,16 @@
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AddTeam","name":"kokosi","password":"hesloheslo","account":{"Assets":[{"Name":"zelezo","Count":120}]}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"kachnicka","MineKey":"sajhflkjsafdfafsdf","Dimensions":[4,80,10],"Resources":4000,"ResourceName":"uhli","Yield":0.001}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"kokosi","mineName":"kachnicka"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"internet","MineKey":"sajhflkjsafdfafsdfgfga","Dimensions":[4,20,10],"Resources":4500,"ResourceName":"osobni udaje","Yield":0.001}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"kokosi","mineName":"internet"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"knihovna","MineKey":"sajhflkjsafdfafsdfdfd","Dimensions":[4,80,10],"Resources":300,"ResourceName":"ticha posta","Yield":0.1}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"kokosi","mineName":"knihovna"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"9be42699-a7e9-451e-aa58-9df9a349576e","From":{"Some":"kokosi"},"To":"kokosi","Assets":[{"Name":"zelezo","Count":2}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AcceptTransaction","Item":"9be42699-a7e9-451e-aa58-9df9a349576e"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"MineItem","teamName":"kokosi","mineName":"internet","power":1}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"a6e51466-2653-4a3e-8c31-539b602b3529","From":{"Some":"kokosi"},"To":null,"Assets":[{"Name":"osobni udaje","Count":3}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"CancelTransaction","Item":"a6e51466-2653-4a3e-8c31-539b602b3529"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"2c33e63f-c1dd-4364-a68d-ee91f688c12a","From":{"Some":"kokosi"},"To":null,"Assets":[],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"CancelTransaction","Item":"2c33e63f-c1dd-4364-a68d-ee91f688c12a"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"MineItem","teamName":"kokosi","mineName":"knihovna","power":1}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"cf207be6-8a99-4dc4-9784-c7dd9e496101","From":{"Some":"kokosi"},"To":"kokosi","Assets":[{"Name":"zelezo","Count":23},{"Name":"osobni udaje","Count":3}],"Notes":""}}}
