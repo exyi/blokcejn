@@ -19,6 +19,7 @@ module Program =
         WebHost
             .CreateDefaultBuilder(args)
             .UseStartup<Startup>()
+            .UseUrls("http://*:12345")
             .Build()
 
     [<EntryPoint>]

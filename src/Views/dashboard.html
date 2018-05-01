@@ -5,7 +5,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blokčejn</title>
+
     <dot:RequiredResource Name="bulma.css" />
     <script>
         var s = new WebSocket("ws://" + location.host + "/ws");
@@ -16,15 +18,15 @@
 </head>
 
 <body>
-    <dot:Button id="refresh_hack_button" style="display:none" Click="{command: 0}" PostBack.Concurrency="Deny" />
+    <dot:Button id="refresh_hack_button" style="display:none" Click="{command: 0}" PostBack.Concurrency="Deny" Validation.Enabled="false" />
 
-    <div class="columns">
+    <div class="columns is-desktop">
         <div class="column">
             <h2 class="panel-heading">
                 Sklad
             </h2>
             <div class="panel-block">
-                <table class="table">
+                <table class="table is-fullwidth">
                     <thead>
                         <th>Surovina</th>
                         <th>Množství</th>
@@ -34,10 +36,52 @@
                         <tr class="">
                             <td>{{value: _this.AssetName}}</td>
                             <td>{{value: _this.Spendable}}</td>
-                            <td Visible="{value: _this.TransactionLocked != 0}">{{value:TransactionLocked}}</td>
+                            <td>{{value: TransactionLocked != 0 ? "" + TransactionLocked : ""}}</td>
                         </tr>
                     </dot:Repeater>
                 </table>
+            </div>
+        </div>
+        <div class="column">
+            <h2 class="panel-heading">
+                Těžba
+            </h2>
+            <dot:Repeater DataSource="{value: Mines}" WrapperTagName="div" RenderWrapperTag="false" IncludeInPage="{value: _page.EvaluatingOnClient}">
+                <div class="panel-block">
+                    <div class="control is-fullwidth">
+                        <p><strong>{{value: Name}}:</strong> {{value: Resource}} (+{{value: NextYield}})</p>
+                        <form>
+                            <div class="field has-addons">
+                                <div class="control">
+                                    <span class="button is-static" style="width:120px">
+                                        [ <dot:Repeater DataSource="{value: NextCoords}" WrapperTagName="span">
+                                              <SeparatorTemplate> | </SeparatorTemplate>
+                                              {{value: _this}}
+                                          </dot:Repeater> ]
+                                    </span>
+                                </div>
+                                <div class="control is-expanded">
+                                    <dot:TextBox class="input is-fullwidth" Text="{value: _root.MineCodes[_index]}" placeholder="zadej kód z dolu" Validator.Value="{value: _root.MineCodes[_index]}" Validator.InvalidCssClass="is-danger" />
+                                </div>
+                                <div class="control">
+                                    <dot:Button class="button" Text="Potvrdit" Click="{command: _root.Mine(_index)}" IsSubmitButton />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </dot:Repeater>
+            <!--</table>-->
+            <div class="panel-block">
+                <p><dot:Validator Value="{value: NewMineName}" /></p>
+                <form class="field has-addons control is-fullwidth">
+                    <span class="control is-expanded">
+                        <dot:TextBox class="input is-fullwidth" placeholder="Přidat nový důl" Text="{value: NewMineName}" Validator.Value="{value: NewMineName}" Validator.InvalidCssClass="is-danger" />
+                    </span>
+                    <span class="control">
+                        <dot:Button Text="Přidat" Click="{command: DiscoverMine()}" IsSubmitButton class="button is-outlined" />
+                    </span>
+                </form>
             </div>
         </div>
         <div class="column">
@@ -47,7 +91,7 @@
 
             <div class="panel-block">
                 <p class="control has-icons-left">
-                    <dot:Button Click="{staticCommand: TransactionModalOpen = true}" Text="Nová transakce" class="button"/>
+                    <dot:Button Click="{staticCommand: TransactionModalOpen = true}" Text="Nová transakce" class="button is-outlined is-fullwidth"/>
                     <span class="icon is-small is-left">
                     <i class="fas fa-search" aria-hidden="true"></i>
                   </span>
@@ -95,70 +139,10 @@
                             <SeparatorTemplate> | </SeparatorTemplate>
                             <span class="" Class-is-danger="{value: Count > 0}">{{value: Count}}: {{value: Name}}</span>
                         </dot:Repeater>
-                        <div class="field has-addons">
-                            <p class="control">
-                                <dot:Button Text="Zrušit" class="button is-danger" onclick="if (!confirm('Fakt jí chceš zrušit')) return false;" Click="{command: _root.CancelTransaction(Id)}" />
-                            </p>
-                        </div>
+                        <dot:Button Text="Zrušit" class="button is-danger" onclick="if (!confirm('Fakt jí chceš zrušit')) return false;" Click="{command: _root.CancelTransaction(Id)}" />
                     </div>
                 </div>
             </dot:Repeater>
-        </div>
-        <div class="column">
-            <h2 class="panel-heading">
-                Těžba
-            </h2>
-            <!--<table class="table">-->
-            <!--<thead>-->
-                <!--<tr>-->
-                <!--<th>Jméno</th>-->
-                <!--<th>Surovina</th>-->
-                <!--<th>Souřadnice kódu</th>-->
-                <!--</tr>-->
-            <!--</thead>-->
-            <dot:Repeater DataSource="{value: Mines}" WrapperTagName="div" RenderWrapperTag="false" IncludeInPage="{value: _page.EvaluatingOnClient}">
-                <div class="panel-block">
-                    <div>
-                    <p><strong>{{value: Name}}:</strong> {{value: Resource}} (+{{value: NextYield}})</p>
-                    <div>
-                            <form>
-                                <div class="field has-addons has-addons-right">
-                                    <div class="control">
-                                        <span class="button is-static">
-                                            [ <dot:Repeater DataSource="{value: NextCoords}" WrapperTagName="span">
-                                                  <SeparatorTemplate> | </SeparatorTemplate>
-                                                  {{value: _this}}
-                                              </dot:Repeater> ]
-                                        </span>
-                                    </div>
-                                    <div class="control">
-                                        <dot:TextBox class="input" Text="{value: _root.MineCodes[_index]}" placeholder="zadej kód z dolu" Validator.Value="{value: _root.MineCodes[_index]}" Validator.InvalidCssClass="is-danger" />
-                                    </div>
-                                    <div class="control">
-                                        <dot:Button class="button" Text="Potvrdit" Click="{command: _root.Mine(_index)}" IsSubmitButton />
-                                    </div>
-                                </div>
-                            </form>
-                    </div>
-                    </div>
-                </div>
-            </dot:Repeater>
-            <!--</table>-->
-            <div class="panel-block">
-                <form>
-                    <dot:Validator Value="{value: NewMineName}" />
-                    <div class="field has-addons">
-                        <div class="control">
-                            <dot:TextBox class="input" placeholder="Přidat nový důl" Text="{value: NewMineName}" Validator.Value="{value: NewMineName}" Validator.InvalidCssClass="is-danger" />
-                        </div>
-                        <div class="control">
-                            <dot:Button Text="Přidat" Click="{command: DiscoverMine()}" IsSubmitButton class="button" />
-                        </div>
-                    </div>
-
-
-                </form>
-            </div>
         </div>
     </div>
     <!--<div class="column">-->
@@ -174,11 +158,11 @@
             </header>
             <section class="modal-card-body" DataContext="{value: TransactionModal}">
                 <p>
-                    <dot:ComboBox DataSource="{value: _root.OtherTeamNames}" SelectedValue="{value: To}" EmptyItemText="Komu poslat..." Validator.Value="{value: To}" Validator.InvalidCssClass="is-danger" class="input" />
+                    <dot:ComboBox DataSource="{value: _root.OtherTeamNames}" SelectedValue="{value: To}" EmptyItemText="Komu poslat..." Validator.Value="{value: To}" Validator.InvalidCssClass="is-danger" class="input is-fullwidth" />
                 </p>
 
                 <p>
-                    <table class="table">
+                    <table class="table is-fullwidth">
                         <dot:Repeater DataSource="{value: Assets}" WrapperTagName="tbody">
                             <tr>
                                 <td>{{value: Name}}</td>
@@ -191,7 +175,7 @@
                 <p>
                     <dot:TextBox Type="multiline" Text="{value: Notes}" placeholder="poznámka" class="textarea" rows="5" />
                 </p>
-                <dot:ValidationSummary />
+                <dot:ValidationSummary IncludeErrorsFromChildren />
             </section>
             <footer class="modal-card-foot">
                 <dot:Button class="button is-success" Click="{command: SubmitTransaction()}" IsSubmitButton="true">Odeslat</dot:Button>
