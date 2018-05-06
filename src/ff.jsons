@@ -5,12 +5,30 @@
 {"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"kokosi","mineName":"internet"}}
 {"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"knihovna","MineKey":"sajhflkjsafdfafsdfdfd","Dimensions":[4,80,10],"Resources":300,"ResourceName":"ticha posta","Yield":0.1}}}
 {"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"kokosi","mineName":"knihovna"}}
-{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"9be42699-a7e9-451e-aa58-9df9a349576e","From":{"Some":"kokosi"},"To":"kokosi","Assets":[{"Name":"zelezo","Count":2}],"Notes":""}}}
-{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AcceptTransaction","Item":"9be42699-a7e9-451e-aa58-9df9a349576e"}}
 {"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"MineItem","teamName":"kokosi","mineName":"internet","power":1}}
-{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"a6e51466-2653-4a3e-8c31-539b602b3529","From":{"Some":"kokosi"},"To":null,"Assets":[{"Name":"osobni udaje","Count":3}],"Notes":""}}}
-{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"CancelTransaction","Item":"a6e51466-2653-4a3e-8c31-539b602b3529"}}
-{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"2c33e63f-c1dd-4364-a68d-ee91f688c12a","From":{"Some":"kokosi"},"To":null,"Assets":[],"Notes":""}}}
-{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"CancelTransaction","Item":"2c33e63f-c1dd-4364-a68d-ee91f688c12a"}}
-{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"MineItem","teamName":"kokosi","mineName":"knihovna","power":1}}
-{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"cf207be6-8a99-4dc4-9784-c7dd9e496101","From":{"Some":"kokosi"},"To":"kokosi","Assets":[{"Name":"zelezo","Count":23},{"Name":"osobni udaje","Count":3}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"17540c04-84e3-4530-bfdf-4885bb174f3d","From":{"Some":"kokosi"},"To":"kokosi","Assets":[{"Name":"zelezo","Count":4},{"Name":"osobni udaje","Count":-400}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AddTeam","name":"debili","password":"hesloheslo","account":{"Assets":[{"Name":"zelezo","Count":12430}]}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"844fb7d6-2e0f-4ee5-9e74-a31cea923b18","From":null,"To":"debili","Assets":[{"Name":"uhli","Count":232}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"9385679f-c338-4501-b8fa-661b70df41cf","From":null,"To":"debili","Assets":[{"Name":"osobni udaje","Count":300}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"debili","mineName":"internet"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"9385679f-c338-4501-b8fa-661b70df41ce","From":null,"To":"debili","Assets":[{"Name":"osobni udaje","Count":20}],"Notes":"hola kokos"}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AcceptTransaction","Item":"9385679f-c338-4501-b8fa-661b70df41ce"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AcceptTransaction","Item":"9385679f-c338-4501-b8fa-661b70df41cf"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AcceptTransaction","Item":"844fb7d6-2e0f-4ee5-9e74-a31cea923b18"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"CancelTransaction","Item":"17540c04-84e3-4530-bfdf-4885bb174f3d"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"7bbc5580-59ff-4bdd-a0d6-b378d1512439","From":{"Some":"kokosi"},"To":"debili","Assets":[{"Name":"zelezo","Count":20},{"Name":"osobni udaje","Count":-3}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AcceptTransaction","Item":"7bbc5580-59ff-4bdd-a0d6-b378d1512439"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"8fa82601-16fb-40b3-96a3-cba6afd08b31","From":{"Some":"kokosi"},"To":"kokosi","Assets":[{"Name":"zelezo","Count":1}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"CancelTransaction","Item":"8fa82601-16fb-40b3-96a3-cba6afd08b31"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"5eb3a718-742e-409f-beef-001a24be22b8","From":{"Some":"kokosi"},"To":"debili","Assets":[{"Name":"osobni udaje","Count":1}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"d08efd68-4018-42a0-9938-77751e5fb744","From":null,"To":"debili","Assets":[{"Name":"uhli","Count":232}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"494389a1-879d-4cd7-95d8-93060ea37a9d","From":{"Some":"kokosi"},"To":"debili","Assets":[{"Name":"zelezo","Count":1}],"Notes":"t2"}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AcceptTransaction","Item":"d08efd68-4018-42a0-9938-77751e5fb744"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AcceptTransaction","Item":"494389a1-879d-4cd7-95d8-93060ea37a9d"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"CancelTransaction","Item":"5eb3a718-742e-409f-beef-001a24be22b8"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"1cfeb171-3519-498f-b2cd-b8e4dcbaeec1","From":{"Some":"debili"},"To":"kokosi","Assets":[{"Name":"zelezo","Count":1000}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AcceptTransaction","Item":"1cfeb171-3519-498f-b2cd-b8e4dcbaeec1"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"eb23472b-a1d6-4b37-ad8f-9a63a9eeb9bc","From":{"Some":"debili"},"To":"kokosi","Assets":[{"Name":"uhli","Count":30}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AcceptTransaction","Item":"eb23472b-a1d6-4b37-ad8f-9a63a9eeb9bc"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"ProposeTransaction","Item":{"Id":"d9c3b853-d855-494e-9fa3-4f727dc4687d","From":{"Some":"debili"},"To":"kokosi","Assets":[{"Name":"uhli","Count":1}],"Notes":""}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"CancelTransaction","Item":"d9c3b853-d855-494e-9fa3-4f727dc4687d"}}

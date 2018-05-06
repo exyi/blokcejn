@@ -5,6 +5,8 @@ type AssetModel = {
     Name: string
     Count: int64
 }
+with
+    static member IsPositive asset = asset.Count > int64 0
 
 type AccountModel = {
     Assets: AssetModel []
@@ -62,7 +64,7 @@ module StateManager =
     let mutable private savefile : string option = None
     let mutable private globalState : GameState = emptyState
     let locker = obj()
-    let mutable private notifications : Action<UpdateMsg> = Action<_>(fun x -> ())
+    let mutable private notifications : Action<UpdateMsg> = Action<_>(ignore)
 
     let addNofificationTarget (a: Action<UpdateMsg>) = lock locker (fun _ ->
             notifications <- Action<_>.Combine(notifications, a) :?> Action<_>
@@ -110,15 +112,16 @@ module StateManager =
                 | AddTeam (name, password, account) ->
                     { s with Teams = Array.append s.Teams [| { TeamModel.Name = name; Account = account; Mines = [||] } |]; Credentials = Array.append s.Credentials [| { TeamCredentials.Name = name; Password = password } |] }
                 | ProposeTransaction t ->
-                    let s = addAssets (fun team -> Some team.Name = t.From) t.Assets (int64 -1) s
+                    let s = addAssets (fun team -> Some team.Name = t.From) (t.Assets |> Array.filter AssetModel.IsPositive) (int64 -1) s
                     { s with Transactions = s.Transactions |> Array.append [| t |] }
                 | AcceptTransaction tid ->
                     let t = s.Transactions |> Array.find (fun t -> t.Id = tid)
                     let s = addAssets (fun team -> team.Name = t.To) t.Assets (int64 1) s
+                    let s = addAssets (fun team -> Some team.Name = t.From) (t.Assets |> Array.filter AssetModel.IsPositive) (int64 -1) s
                     { s with Transactions = s.Transactions |> Array.except [| t |] }
                 | CancelTransaction tid ->
                     let t = s.Transactions |> Array.find (fun t -> t.Id = tid)
-                    let s = addAssets (fun team -> Some team.Name = t.From) t.Assets (int64 1) s
+                    let s = addAssets (fun team -> Some team.Name = t.From) (t.Assets |> Array.filter AssetModel.IsPositive) (int64 1) s
                     { s with Transactions = s.Transactions |> Array.except [| t |] }
                 | NewMine mine ->
                     { s with Mines = Array.append s.Mines [|mine|] }

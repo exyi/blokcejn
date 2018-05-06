@@ -27,6 +27,7 @@ module Program =
         match Environment.GetEnvironmentVariable "blokcejn_savefile" with
         | null | "" -> ()
         | f -> StateManager.reload (Some f)
+        StateManager.processUpdate (UpdateMsg.ProposeTransaction { TransactionModel.Id = Guid.NewGuid(); From = None; To = "debili"; Assets = [| { AssetModel.Count = int64 232; Name = "uhli" } |]; Notes = "" })
         BuildWebHost(args).Run()
 
         exitCode

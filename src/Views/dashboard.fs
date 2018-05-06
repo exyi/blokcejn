@@ -44,6 +44,8 @@ module Helpers =
         let teamData = state.Teams |> Array.find (fun t -> t.Name = teamName)
         (state, teamData)
 
+    let isGodMode (context: HttpContext) = context.Request.Cookies.Item "magic_secret" = "ffsahflksafhsajfhgds"
+
 type TransactionViewModel = {
     [<RequiredAttribute>]
     To: string
@@ -68,19 +70,25 @@ type ViewModel() =
         fun name -> Map.tryFind name spendableAssets |> Option.defaultValue (int64 0)
 
     override x.Load() =
-        x.TeamName <- match Helpers.authCheck (x.Context.GetAspNetCoreContext()) with
+        x.IsGodMode <- Helpers.isGodMode (x.Context.GetAspNetCoreContext())
+        if not x.IsGodMode then
+            x.TeamName <-
+                      match Helpers.authCheck (x.Context.GetAspNetCoreContext()) with
                       | Some name -> name
                       | None -> x.Context.RedirectToRoute("login"); failwith ""
 
         Task.CompletedTask
 
     override x.PreRender() =
-        let (state, teamData) = Helpers.getTeamState x.TeamName
-
+        let state = StateManager.getState()
         x.OtherTeamNames <- state.Teams |> Array.map (fun t -> t.Name)
+        if String.IsNullOrEmpty x.TeamName then x.TeamName <- Array.head x.OtherTeamNames
         x.ComingTransactions <- state.Transactions |> Array.filter (fun t -> t.To = x.TeamName)
         let pendingTransations = state.Transactions |> Array.filter (fun t -> t.From = Some x.TeamName)
         x.MyPendingTransactions <- pendingTransations
+
+        let (_, teamData) = Helpers.getTeamState x.TeamName
+
         x.AccountData <-
             teamData.Account.Assets
             |> Array.map (fun (a: AssetModel) ->
@@ -100,7 +108,6 @@ type ViewModel() =
 
         Task.CompletedTask
 
-    [<BindAttribute(Direction.ServerToClientFirstRequest)>]
     member val TeamName : string = "" with get, set
     member val TransactionModalOpen = false with get, set
     [<BindAttribute(Direction.ServerToClient)>]
@@ -120,6 +127,15 @@ type ViewModel() =
     [<ProtectAttribute(ProtectMode.SignData)>]
     member val Mines : MineStateViewModel[] = [||] with get, set
     member val MineCodes: string[] = [||] with get, set
+
+    member val UpdateMsgSerialized = "" with get, set
+    member val IsGodMode = false with get, set
+    member val GodModeTeamSwitch = "" with get, set
+
+    member x.ChangeTeam() =
+        let (_, teamData) = Helpers.getTeamState x.TeamName
+        x.MineCodes <- [||]
+        x.TransactionModal <- emptyTransactionModal teamData
 
     member x.SubmitTransaction() =
         lock StateManager.locker (fun _ ->
@@ -154,10 +170,10 @@ type ViewModel() =
     member x.AcceptTransaction (transaction:TransactionModel) =
         let (state, teamData) = Helpers.getTeamState x.TeamName
         let spendable = spendableAmount teamData
-        for i in transaction.Assets |> Array.filter (fun a -> spendable a.Name - a.Count < int64 0) do
+        for i in transaction.Assets |> Array.filter (fun a -> spendable a.Name + a.Count < int64 0) do
             x.Context.ModelState.Errors.Add(
                                     let m = ViewModelValidationError()
-                                    m.PropertyPath <- "$data"
+                                    m.PropertyPath <- "Assets"
                                     m.ErrorMessage <- sprintf "%s: Máš jenom %d" i.Name (spendable i.Name)
                                     m)
         x.Context.FailOnInvalidModelState()
@@ -190,6 +206,18 @@ type ViewModel() =
         x.Context.FailOnInvalidModelState()
         x.MineCodes.[index] <- ""
         StateManager.processUpdate (UpdateMsg.MineItem (x.TeamName, mineVM.Name, 1))
+
+    member x.PushMsg () =
+        if not x.IsGodMode then failwith "go away"
+        try
+            let msgstring = x.UpdateMsgSerialized
+            let msg = StateManager.serializer.UnPickleOfString<UpdateMsg> msgstring
+            StateManager.processUpdate msg
+        with e ->
+            // ta zkurvená validace tu nefunguje, tak se prostě můžeš podívat do stdout...
+            printfn "push msg error: %O" e
+            x.AddModelError(Expr.Quote(fun x -> x.UpdateMsgSerialized), e.ToString()) |> ignore
+            x.Context.FailOnInvalidModelState()
 
 
 

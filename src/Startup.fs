@@ -17,6 +17,7 @@ open Microsoft.Extensions.DependencyInjection
 open Model
 open MBrace.FsPickler.Json
 open Model
+open Views.Dashboard
 
 
 type DotvvmStartup() =
@@ -27,6 +28,7 @@ type DotvvmStartup() =
             config.Resources.Register("bulma.css", StylesheetResource(FileResourceLocation("Resources/bulma.min.css")))
             config.Styles.Register<Button>().SetDotvvmProperty(Button.ButtonTagNameProperty, ButtonTagName.button, StyleOverrideOptions.Ignore) |> ignore
             config.Styles.Register<Validator>().SetDotvvmProperty(Validator.ShowErrorMessageTextProperty, true).SetAttribute("class", "is-danger", StyleOverrideOptions.Append) |> ignore
+            config.ClientSideValidation <- false
             ()
 
 type Startup() =
@@ -47,7 +49,7 @@ type Startup() =
                     let! ws = context.WebSockets.AcceptWebSocketAsync()
                     do! WebSocketUpdate.handleWS ws context.Request.Cookies.["name"]
                 } :> Task
-            else if context.Request.Cookies.Item "magic_secret" = "ffsahflksafhsajfhgds" then
+            else if Helpers.isGodMode context then
                 if context.Request.Path.Value = "/dump" then
                     let s = FsPickler.CreateJsonSerializer(indent = true)
                     context.Response.WriteAsync(s.PickleToString (StateManager.getState()))

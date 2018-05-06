@@ -15,6 +15,9 @@
             document.getElementById("refresh_hack_button").click();
         }
     </script>
+    <dot:InlineScript>
+        dotvvm.events.postbackHandlersStarted.subscribe(function () { dotvvm.validation.errors.removeAll(); });
+    </dot:InlineScript>
 </head>
 
 <body>
@@ -84,7 +87,7 @@
                 </form>
             </div>
         </div>
-        <div class="column">
+        <div class="column" Validation.Enabled="false">
             <h2 class="panel-heading">
                 Transakce
             </h2>
@@ -106,17 +109,17 @@
                 <div class="panel-block">
                     <div Validation.Target="{value: _this}">
                         <p style="">
-                            <strong data-bind="text: '\'' + $data.From().Fields()[0]() + '\':'"></strong>
+                            <strong data-bind="text: '\'' + ($data.From() && $data.From().Fields()[0]()) + '\':'"></strong>
                             {{value: Notes}}
                         </p>
                         <dot:Repeater DataSource="{value: Assets}" WrapperTagName="p">
                             <SeparatorTemplate> | </SeparatorTemplate>
-                            <span class="" Class-is-danger="{value: Count < 0}">{{value: Count}}: {{value: Name}}</span>
+                            <span class="" Class-is-danger="{value: Count < 0}">{{value: Name}}: {{value: Count}}</span>
                         </dot:Repeater>
-                        <dot:Validator Value="{value: _this}" />
+                        <dot:Validator Value="{value: Assets}" />
                         <div class="field has-addons">
                             <p class="control">
-                                <dot:Button Text="Přijmout" class="button is-success" Click="{command: _root.AcceptTransaction(_this)}" />
+                                <dot:Button Text="Přijmout" class="button is-success" Click="{command: _root.AcceptTransaction(_this)}" Validation.Enabled="true" />
                             </p>
                             <p class="control">
                                 <dot:Button Text="Zrušit" class="button is-danger" onclick="if (!confirm('Fakt jí chceš zrušit')) return false;" Click="{command: _root.CancelTransaction(Id)}" />
@@ -137,7 +140,7 @@
                         </p>
                         <dot:Repeater DataSource="{value: Assets}" WrapperTagName="p">
                             <SeparatorTemplate> | </SeparatorTemplate>
-                            <span class="" Class-is-danger="{value: Count > 0}">{{value: Count}}: {{value: Name}}</span>
+                            <span class="" Class-is-danger="{value: Count > 0}">{{value: Name}}: {{value: Count}}</span>
                         </dot:Repeater>
                         <dot:Button Text="Zrušit" class="button is-danger" onclick="if (!confirm('Fakt jí chceš zrušit')) return false;" Click="{command: _root.CancelTransaction(Id)}" />
                     </div>
@@ -184,6 +187,18 @@
         </div>
     </div>
     </form>
+
+    <div IncludeInPage="{value: IsGodMode}" Validation.Enabled="false">
+        <h2>God toolkit</h2>
+        <p>Vybrat tým: <dot:ComboBox DataSource="{value: OtherTeamNames}" SelectedValue="{value: TeamName}" SelectionChanged="{command: ChangeTeam()}" class="input" /></p>
+        <p>
+            <form>
+                Push msg: <dot:TextBox Type="multiline" class="textarea" Text="{value: UpdateMsgSerialized}" />
+                <dot:Validator Value="{value: UpdateMsgSerialized}" />
+                <dot:Button Text="Push" Click="{command: PushMsg()}" IsSubmitButton class="button" />
+            </form>
+        </p>
+    </div>
 </body>
 
 </html>

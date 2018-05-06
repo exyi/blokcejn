@@ -22,7 +22,7 @@ let handleWS (connection: WebSocket) teamName =
                 | UpdateMsg.DiscoverMine (team, _) -> team = teamName
                 | UpdateMsg.MineItem (team, _, _) -> team = teamName
                 | UpdateMsg.NewMine _ -> false
-            if shouldUpdate then
+            if shouldUpdate || String.IsNullOrEmpty teamName then
                 printfn "Sending update to %s" teamName
                 connection.SendAsync(ArraySegment.Empty, WebSocketMessageType.Text, true, CancellationToken.None) |> ignore
         )
