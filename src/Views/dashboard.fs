@@ -17,6 +17,7 @@ type MineStateViewModel = {
     Resource: string
     NextYield: int
     NextCoords: int[]
+    Power: int
 }
 
 module Helpers =
@@ -95,9 +96,9 @@ type ViewModel() =
                 let locked = pendingTransations |> Seq.sumBy (fun t -> t.Assets |> Seq.tryFind (fun aa -> aa.Name = a.Name) |> Option.map (fun a -> a.Count) |> Option.defaultValue (int64 0))
                 { AccountDataViewModel.AssetName = a.Name; Spendable = a.Count; TransactionLocked = locked }
             )
-        x.Mines <- teamData.Mines |> Array.map (fun (i, m) ->
+        x.Mines <- teamData.Mines |> Array.map (fun (i, pow, m) ->
                 let mine = state.Mines |> Array.find (fun (mm:MineModel) -> mm.Name = m)
-                { MineStateViewModel.Name = mine.Name; NextYield = int (mine.Yield * float mine.Resources); NextCoords = Hasher.getCoords m x.TeamName (Seq.toList mine.Dimensions) i; Resource = mine.ResourceName }
+                { MineStateViewModel.Name = mine.Name; Power = pow; NextYield = int (mine.Yield * float mine.Resources); NextCoords = Hasher.getCoords m x.TeamName (Seq.toList mine.Dimensions) i; Resource = mine.ResourceName }
             )
         x.MineCodes <- Array.append x.MineCodes (Array.create (x.Mines.Length - x.MineCodes.Length) "")
 
@@ -127,6 +128,8 @@ type ViewModel() =
     [<ProtectAttribute(ProtectMode.SignData)>]
     member val Mines : MineStateViewModel[] = [||] with get, set
     member val MineCodes: string[] = [||] with get, set
+
+    member val MineUpgrade = 0 with get, set
 
     member val UpdateMsgSerialized = "" with get, set
     member val IsGodMode = false with get, set
@@ -187,7 +190,7 @@ type ViewModel() =
         let (state, teamData) = Helpers.getTeamState x.TeamName
         if Array.exists (fun (m: MineModel) -> m.Name = x.NewMineName) state.Mines |> not then
             x.AddModelError(Expr.Quote(fun x -> x.NewMineName), "Takový důl není") |> ignore
-        if Array.exists (fun (_, n) -> n = x.NewMineName) teamData.Mines then
+        if Array.exists (fun (_, _, n) -> n = x.NewMineName) teamData.Mines then
             x.AddModelError(Expr.Quote(fun x -> x.NewMineName), "Tento důl už máš objevený") |> ignore
         x.Context.FailOnInvalidModelState()
         StateManager.processUpdate (UpdateMsg.DiscoverMine (x.TeamName, x.NewMineName))
@@ -205,7 +208,7 @@ type ViewModel() =
                             m)
         x.Context.FailOnInvalidModelState()
         x.MineCodes.[index] <- ""
-        StateManager.processUpdate (UpdateMsg.MineItem (x.TeamName, mineVM.Name, 1))
+        StateManager.processUpdate (UpdateMsg.MineItem (x.TeamName, mineVM.Name, mineVM.Power))
 
     member x.PushMsg () =
         if not x.IsGodMode then failwith "go away"
@@ -218,6 +221,11 @@ type ViewModel() =
             printfn "push msg error: %O" e
             x.AddModelError(Expr.Quote(fun x -> x.UpdateMsgSerialized), e.ToString()) |> ignore
             x.Context.FailOnInvalidModelState()
+
+    member x.UpgradeMine (mineName) =
+        if not x.IsGodMode then failwith "go away"
+        StateManager.processUpdate (UpdateMsg.UpgradeMine (x.TeamName, mineName, x.MineUpgrade))
+        x.MineUpgrade <- 0
 
 
 

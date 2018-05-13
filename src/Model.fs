@@ -15,7 +15,7 @@ type AccountModel = {
 type TeamModel = {
     Name: string
     Account: AccountModel
-    Mines: (int * string) []
+    Mines: (int * int * string) []
 }
 
 type TeamCredentials = {
@@ -55,8 +55,10 @@ type UpdateMsg =
     | NewMine of MineModel
     | DiscoverMine of teamName: string * mineName: string
     | MineItem of teamName: string * mineName: string * power: int
+    | UpgradeMine of teamName: string * mineName: string * levels: int
 
 module StateManager =
+    open System.Collections.Generic
     open MBrace.FsPickler.Json
 
     let emptyState = { Teams = [||]; Transactions = [||]; Credentials = [||]; Mines = [||] }
@@ -65,6 +67,8 @@ module StateManager =
     let mutable private globalState : GameState = emptyState
     let locker = obj()
     let mutable private notifications : Action<UpdateMsg> = Action<_>(ignore)
+    let private txLog = ResizeArray()
+    let getTxLog () = txLog :> _ seq
 
     let addNofificationTarget (a: Action<UpdateMsg>) = lock locker (fun _ ->
             notifications <- Action<_>.Combine(notifications, a) :?> Action<_>
@@ -80,7 +84,7 @@ module StateManager =
         state.Teams |> Seq.groupBy (fun t -> t.Name) |> isGroupOfOne
         state.Mines |> Seq.groupBy (fun t -> t.Name) |> isGroupOfOne
         state.Mines |> Seq.forall(fun m -> m.Resources >= int64 0) |> req
-        state.Teams |> Seq.iter(fun t -> t.Mines |> Seq.groupBy snd |> isGroupOfOne)
+        state.Teams |> Seq.iter(fun t -> t.Mines |> Seq.groupBy (fun (_, _, a) -> a) |> isGroupOfOne)
         state.Teams |> Seq.forall (fun t -> t.Account.Assets |> Seq.forall (fun a -> a.Count >= int64 0)) |> req
 
     let private editTeams teamPredicate teamSelect state =
@@ -126,15 +130,16 @@ module StateManager =
                 | NewMine mine ->
                     { s with Mines = Array.append s.Mines [|mine|] }
                 | DiscoverMine (team, mine) ->
-                    editTeams (fun t -> t.Name = team) (fun t -> { t with Mines = Array.append t.Mines [|0, mine|] }) s
+                    editTeams (fun t -> t.Name = team) (fun t -> { t with Mines = Array.append t.Mines [|0, 1, mine|] }) s
                 | MineItem (team, mineName, power) ->
                     let mine = s.Mines |> Array.find (fun m -> m.Name = mineName)
                     let mined = int64 (mine.Yield * float power * float mine.Resources)
+                    let mined = if mine.Resources - mined >= int64 0 then mined else mine.Resources
                     let s = addAssets (fun t -> t.Name = team) [| { AssetModel.Name = mine.ResourceName; Count = mined } |] (int64 1) s
                     let s = editTeams (fun t -> t.Name = team) (fun team ->
-                               { team with Mines = team.Mines |> Array.map (fun (i, n) ->
-                                        if n = mineName then (i + 1, n)
-                                        else (i, n))
+                               { team with Mines = team.Mines |> Array.map (fun (i, pow, n) ->
+                                        if n = mineName then (i + 1, pow, n)
+                                        else (i, pow, n))
                                } ) s
                     { s with
                         Mines = s.Mines |> Array.map (fun m ->
@@ -142,6 +147,15 @@ module StateManager =
                             | m when m = mine -> { m with Resources = m.Resources - mined }
                             | a -> a)
                     }
+                | UpgradeMine (team, mine, levels) ->
+                    editTeams (fun t -> t.Name = team) (fun t ->
+                        { t with Mines = t.Mines |> Array.map (fun (i, p, name) ->
+                                            if name = mine then
+                                                (i, p + levels, name)
+                                            else
+                                                (i, p, name)
+                                 )
+                        }) s
 
             validateState newState
 
@@ -149,6 +163,7 @@ module StateManager =
 
             globalState <- newState
 
+            txLog.Add msg
             savefile |> Option.map (fun f -> IO.File.AppendAllLines(f, [ serializer.PickleToString msg ])) |> ignore
 
             ()
