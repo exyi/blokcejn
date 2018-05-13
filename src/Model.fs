@@ -117,7 +117,7 @@ module StateManager =
                 | AcceptTransaction tid ->
                     let t = s.Transactions |> Array.find (fun t -> t.Id = tid)
                     let s = addAssets (fun team -> team.Name = t.To) t.Assets (int64 1) s
-                    let s = addAssets (fun team -> Some team.Name = t.From) (t.Assets |> Array.filter AssetModel.IsPositive) (int64 -1) s
+                    let s = addAssets (fun team -> Some team.Name = t.From) (t.Assets |> Array.filter (AssetModel.IsPositive >> not)) (int64 -1) s
                     { s with Transactions = s.Transactions |> Array.except [| t |] }
                 | CancelTransaction tid ->
                     let t = s.Transactions |> Array.find (fun t -> t.Id = tid)
