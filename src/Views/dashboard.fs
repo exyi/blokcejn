@@ -94,6 +94,7 @@ type ViewModel() =
             teamData.Account.Assets
             |> Array.map (fun (a: AssetModel) ->
                 let locked = pendingTransations |> Seq.sumBy (fun t -> t.Assets |> Seq.tryFind (fun aa -> aa.Name = a.Name) |> Option.map (fun a -> a.Count) |> Option.defaultValue (int64 0))
+                let locked = if locked < 0L then 0L else locked
                 { AccountDataViewModel.AssetName = a.Name; Spendable = a.Count; TransactionLocked = locked }
             )
         x.Mines <- teamData.Mines |> Array.map (fun (i, pow, m) ->

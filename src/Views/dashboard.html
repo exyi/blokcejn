@@ -82,7 +82,7 @@
                 <p><dot:Validator Value="{value: NewMineName}" /></p>
                 <form class="field has-addons control is-fullwidth">
                     <span class="control is-expanded">
-                        <dot:TextBox class="input is-fullwidth" placeholder="Přidat nový důl" Text="{value: NewMineName}" Validator.Value="{value: NewMineName}" Validator.InvalidCssClass="is-danger" />
+                        <dot:TextBox class="input is-fullwidth" placeholder="Přidat nový důl" Text="{value: NewMineName}" Validation.Enabled="true" Validator.Value="{value: NewMineName}" Validator.InvalidCssClass="is-danger" />
                     </span>
                     <span class="control">
                         <dot:Button Text="Přidat" Click="{command: DiscoverMine()}" IsSubmitButton class="button is-outlined" />
