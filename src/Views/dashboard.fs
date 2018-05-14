@@ -98,7 +98,7 @@ type ViewModel() =
             )
         x.Mines <- teamData.Mines |> Array.map (fun (i, pow, m) ->
                 let mine = state.Mines |> Array.find (fun (mm:MineModel) -> mm.Name = m)
-                { MineStateViewModel.Name = mine.Name; Power = pow; NextYield = int (mine.Yield * float mine.Resources); NextCoords = Hasher.getCoords m x.TeamName (Seq.toList mine.Dimensions) i; Resource = mine.ResourceName }
+                { MineStateViewModel.Name = mine.Name; Power = pow; NextYield = int (mine.Yield * float mine.Resources * float pow); NextCoords = Hasher.getCoords m x.TeamName (Seq.toList mine.Dimensions) i; Resource = mine.ResourceName }
             )
         x.MineCodes <- Array.append x.MineCodes (Array.create (x.Mines.Length - x.MineCodes.Length) "")
 

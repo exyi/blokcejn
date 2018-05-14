@@ -52,7 +52,7 @@
             <dot:Repeater DataSource="{value: Mines}" WrapperTagName="div" RenderWrapperTag="false" IncludeInPage="{value: _page.EvaluatingOnClient}">
                 <div class="panel-block">
                     <div class="control is-fullwidth">
-                        <p><strong>{{value: Name}}:</strong> {{value: Resource}} (+{{value: NextYield}} * {{value: Power}})</p>
+                        <p><strong>{{value: Name}}:</strong> {{value: Resource}} (+{{value: NextYield}}, lvl = {{value: Power}})</p>
                         <form>
                             <div class="field has-addons">
                                 <div class="control">
