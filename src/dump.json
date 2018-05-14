@@ -1,0 +1,1005 @@
+{
+  "FsPickler": "4.0.0",
+  "type": "Model.GameState",
+  "value": {
+    "Teams": [
+      {
+        "Name": "«Česká Pošta»",
+        "Account": {
+          "Assets": [
+            {
+              "Name": "balicky z ciny",
+              "Count": 11450
+            },
+            {
+              "Name": "zelezo",
+              "Count": 1243
+            },
+            {
+              "Name": "repka",
+              "Count": 22112
+            },
+            {
+              "Name": "palivove hmoty",
+              "Count": 20031
+            },
+            {
+              "Name": "brasna",
+              "Count": 20030
+            },
+            {
+              "Name": "tajne dokumenty",
+              "Count": 20152
+            },
+            {
+              "Name": "stiraci losy",
+              "Count": 17545
+            },
+            {
+              "Name": "osobni udaje",
+              "Count": 20302
+            },
+            {
+              "Name": "drevo",
+              "Count": 21472
+            },
+            {
+              "Name": "ztracene dopisy",
+              "Count": 20104
+            },
+            {
+              "Name": "biopalivo",
+              "Count": 15716
+            }
+          ]
+        },
+        "Mines": [
+          {
+            "Item1": 0,
+            "Item2": 11,
+            "Item3": "nadrazi"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "drevnik"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "barbora"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "ali"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "zvonicka"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "drevenazvonicka"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "kiruna"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "prehrada"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "hasici"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "internet"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "autobus"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "pole"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "schranka"
+          }
+        ]
+      },
+      {
+        "Name": "«Banka»",
+        "Account": {
+          "Assets": [
+            {
+              "Name": "balicky z ciny",
+              "Count": 21136
+            },
+            {
+              "Name": "zelezo",
+              "Count": 2820
+            },
+            {
+              "Name": "tajne dokumenty",
+              "Count": 19869
+            },
+            {
+              "Name": "stiraci losy",
+              "Count": 19153
+            },
+            {
+              "Name": "drevo",
+              "Count": 22852
+            },
+            {
+              "Name": "brasna",
+              "Count": 20032
+            },
+            {
+              "Name": "osobni udaje",
+              "Count": 20249
+            },
+            {
+              "Name": "repka",
+              "Count": 4030
+            },
+            {
+              "Name": "biopalivo",
+              "Count": 24140
+            },
+            {
+              "Name": "ztracene dopisy",
+              "Count": 185
+            }
+          ]
+        },
+        "Mines": [
+          {
+            "Item1": 1,
+            "Item2": 1,
+            "Item3": "ali"
+          },
+          {
+            "Item1": 2,
+            "Item2": 101,
+            "Item3": "barbora"
+          }
+        ]
+      },
+      {
+        "Name": "kapitalisti",
+        "Account": {
+          "Assets": [
+            {
+              "Name": "zelezo",
+              "Count": 105
+            },
+            {
+              "Name": "osobni udaje",
+              "Count": 0
+            },
+            {
+              "Name": "stiraci losy",
+              "Count": 973
+            },
+            {
+              "Name": "ztracene dopisy",
+              "Count": 76
+            },
+            {
+              "Name": "drevo",
+              "Count": 48
+            },
+            {
+              "Name": "balicky z ciny",
+              "Count": 5
+            },
+            {
+              "Name": "repka",
+              "Count": 0
+            },
+            {
+              "Name": "biopalivo",
+              "Count": 87
+            },
+            {
+              "Name": "tajne dokumenty",
+              "Count": 0
+            }
+          ]
+        },
+        "Mines": [
+          {
+            "Item1": 23,
+            "Item2": 2,
+            "Item3": "ali"
+          },
+          {
+            "Item1": 21,
+            "Item2": 2,
+            "Item3": "drevnik"
+          },
+          {
+            "Item1": 7,
+            "Item2": 1,
+            "Item3": "autobus"
+          },
+          {
+            "Item1": 9,
+            "Item2": 2,
+            "Item3": "schranka"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "prehrada"
+          },
+          {
+            "Item1": 37,
+            "Item2": 2,
+            "Item3": "barbora"
+          },
+          {
+            "Item1": 4,
+            "Item2": 1,
+            "Item3": "internet"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "kiruna"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "les"
+          },
+          {
+            "Item1": 6,
+            "Item2": 1,
+            "Item3": "pole"
+          },
+          {
+            "Item1": 1,
+            "Item2": 1,
+            "Item3": "hasici"
+          },
+          {
+            "Item1": 3,
+            "Item2": 3,
+            "Item3": "nadrazi"
+          }
+        ]
+      },
+      {
+        "Name": "trolove",
+        "Account": {
+          "Assets": [
+            {
+              "Name": "zelezo",
+              "Count": 169
+            },
+            {
+              "Name": "osobni udaje",
+              "Count": 0
+            },
+            {
+              "Name": "ztracene dopisy",
+              "Count": 1
+            },
+            {
+              "Name": "tajne dokumenty",
+              "Count": 30
+            },
+            {
+              "Name": "stiraci losy",
+              "Count": 575
+            },
+            {
+              "Name": "repka",
+              "Count": 12
+            },
+            {
+              "Name": "balicky z ciny",
+              "Count": 0
+            },
+            {
+              "Name": "drevo",
+              "Count": 57
+            },
+            {
+              "Name": "biopalivo",
+              "Count": 65
+            }
+          ]
+        },
+        "Mines": [
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "ali"
+          },
+          {
+            "Item1": 62,
+            "Item2": 1,
+            "Item3": "barbora"
+          },
+          {
+            "Item1": 8,
+            "Item2": 1,
+            "Item3": "autobus"
+          },
+          {
+            "Item1": 4,
+            "Item2": 1,
+            "Item3": "schranka"
+          },
+          {
+            "Item1": 3,
+            "Item2": 1,
+            "Item3": "internet"
+          },
+          {
+            "Item1": 6,
+            "Item2": 1,
+            "Item3": "pole"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "les"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "hasici"
+          },
+          {
+            "Item1": 44,
+            "Item2": 1,
+            "Item3": "drevnik"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "prehrada"
+          }
+        ]
+      },
+      {
+        "Name": "tlj",
+        "Account": {
+          "Assets": [
+            {
+              "Name": "zelezo",
+              "Count": 11
+            },
+            {
+              "Name": "ztracene dopisy",
+              "Count": 2
+            },
+            {
+              "Name": "osobni udaje",
+              "Count": 0
+            },
+            {
+              "Name": "drevo",
+              "Count": 41
+            },
+            {
+              "Name": "repka",
+              "Count": 43
+            },
+            {
+              "Name": "biopalivo",
+              "Count": 0
+            },
+            {
+              "Name": "balicky z ciny",
+              "Count": 10452
+            },
+            {
+              "Name": "stiraci losy",
+              "Count": 274
+            },
+            {
+              "Name": "tajne dokumenty",
+              "Count": 0
+            }
+          ]
+        },
+        "Mines": [
+          {
+            "Item1": 52,
+            "Item2": 2,
+            "Item3": "ali"
+          },
+          {
+            "Item1": 22,
+            "Item2": 2,
+            "Item3": "barbora"
+          },
+          {
+            "Item1": 2,
+            "Item2": 1,
+            "Item3": "internet"
+          },
+          {
+            "Item1": 14,
+            "Item2": 2,
+            "Item3": "schranka"
+          },
+          {
+            "Item1": 21,
+            "Item2": 1,
+            "Item3": "nadrazi"
+          },
+          {
+            "Item1": 1,
+            "Item2": 1,
+            "Item3": "kiruna"
+          },
+          {
+            "Item1": 2,
+            "Item2": 1,
+            "Item3": "les"
+          },
+          {
+            "Item1": 16,
+            "Item2": 1,
+            "Item3": "hasici"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "prehrada"
+          },
+          {
+            "Item1": 5,
+            "Item2": 1,
+            "Item3": "autobus"
+          },
+          {
+            "Item1": 5,
+            "Item2": 2,
+            "Item3": "pole"
+          },
+          {
+            "Item1": 7,
+            "Item2": 1,
+            "Item3": "drevnik"
+          }
+        ]
+      },
+      {
+        "Name": "broforce",
+        "Account": {
+          "Assets": [
+            {
+              "Name": "zelezo",
+              "Count": 69
+            },
+            {
+              "Name": "osobni udaje",
+              "Count": 0
+            },
+            {
+              "Name": "ztracene dopisy",
+              "Count": 7
+            },
+            {
+              "Name": "repka",
+              "Count": 28
+            },
+            {
+              "Name": "drevo",
+              "Count": 88
+            },
+            {
+              "Name": "balicky z ciny",
+              "Count": 0
+            },
+            {
+              "Name": "stiraci losy",
+              "Count": 69
+            }
+          ]
+        },
+        "Mines": [
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "ali"
+          },
+          {
+            "Item1": 65,
+            "Item2": 5,
+            "Item3": "barbora"
+          },
+          {
+            "Item1": 3,
+            "Item2": 1,
+            "Item3": "schranka"
+          },
+          {
+            "Item1": 2,
+            "Item2": 1,
+            "Item3": "internet"
+          },
+          {
+            "Item1": 9,
+            "Item2": 2,
+            "Item3": "autobus"
+          },
+          {
+            "Item1": 6,
+            "Item2": 1,
+            "Item3": "pole"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "les"
+          },
+          {
+            "Item1": 1,
+            "Item2": 1,
+            "Item3": "kiruna"
+          },
+          {
+            "Item1": 30,
+            "Item2": 4,
+            "Item3": "drevnik"
+          }
+        ]
+      },
+      {
+        "Name": "komunisti",
+        "Account": {
+          "Assets": [
+            {
+              "Name": "zelezo",
+              "Count": 28
+            },
+            {
+              "Name": "repka",
+              "Count": 14
+            },
+            {
+              "Name": "osobni udaje",
+              "Count": 0
+            },
+            {
+              "Name": "tajne dokumenty",
+              "Count": 13
+            },
+            {
+              "Name": "drevo",
+              "Count": 21
+            },
+            {
+              "Name": "biopalivo",
+              "Count": 56
+            },
+            {
+              "Name": "stiraci losy",
+              "Count": 636
+            },
+            {
+              "Name": "balicky z ciny",
+              "Count": 199
+            },
+            {
+              "Name": "ztracene dopisy",
+              "Count": 28
+            },
+            {
+              "Name": "palivove hmoty",
+              "Count": 1
+            },
+            {
+              "Name": "brasna",
+              "Count": 0
+            }
+          ]
+        },
+        "Mines": [
+          {
+            "Item1": 67,
+            "Item2": 1,
+            "Item3": "ali"
+          },
+          {
+            "Item1": 48,
+            "Item2": 1,
+            "Item3": "barbora"
+          },
+          {
+            "Item1": 6,
+            "Item2": 1,
+            "Item3": "pole"
+          },
+          {
+            "Item1": 5,
+            "Item2": 1,
+            "Item3": "autobus"
+          },
+          {
+            "Item1": 6,
+            "Item2": 1,
+            "Item3": "internet"
+          },
+          {
+            "Item1": 1,
+            "Item2": 2,
+            "Item3": "kiruna"
+          },
+          {
+            "Item1": 2,
+            "Item2": 1,
+            "Item3": "les"
+          },
+          {
+            "Item1": 5,
+            "Item2": 1,
+            "Item3": "hasici"
+          },
+          {
+            "Item1": 18,
+            "Item2": 1,
+            "Item3": "drevnik"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "nadrazi"
+          }
+        ]
+      },
+      {
+        "Name": "katoda",
+        "Account": {
+          "Assets": [
+            {
+              "Name": "zelezo",
+              "Count": 167
+            },
+            {
+              "Name": "osobni udaje",
+              "Count": 0
+            },
+            {
+              "Name": "repka",
+              "Count": 627
+            },
+            {
+              "Name": "stiraci losy",
+              "Count": 839
+            },
+            {
+              "Name": "drevo",
+              "Count": 7
+            },
+            {
+              "Name": "tajne dokumenty",
+              "Count": 0
+            },
+            {
+              "Name": "balicky z ciny",
+              "Count": 1
+            },
+            {
+              "Name": "biopalivo",
+              "Count": 0
+            },
+            {
+              "Name": "brasna",
+              "Count": 2
+            },
+            {
+              "Name": "ztracene dopisy",
+              "Count": 0
+            }
+          ]
+        },
+        "Mines": [
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "ali"
+          },
+          {
+            "Item1": 11,
+            "Item2": 1,
+            "Item3": "drevnik"
+          },
+          {
+            "Item1": 0,
+            "Item2": 1,
+            "Item3": "prehrada"
+          },
+          {
+            "Item1": 25,
+            "Item2": 2,
+            "Item3": "barbora"
+          },
+          {
+            "Item1": 17,
+            "Item2": 3,
+            "Item3": "autobus"
+          },
+          {
+            "Item1": 6,
+            "Item2": 5,
+            "Item3": "internet"
+          },
+          {
+            "Item1": 15,
+            "Item2": 1,
+            "Item3": "nadrazi"
+          },
+          {
+            "Item1": 14,
+            "Item2": 3,
+            "Item3": "pole"
+          },
+          {
+            "Item1": 3,
+            "Item2": 3,
+            "Item3": "les"
+          },
+          {
+            "Item1": 3,
+            "Item2": 11,
+            "Item3": "kiruna"
+          }
+        ]
+      }
+    ],
+    "Transactions": [
+      {
+        "Id": "100c4891-beba-4dc5-90bb-6fcfc6751705",
+        "From": {
+          "Some": "trolove"
+        },
+        "To": "«Banka»",
+        "Assets": [
+          {
+            "Name": "stiraci losy",
+            "Count": -100
+          },
+          {
+            "Name": "repka",
+            "Count": 300
+          }
+        ],
+        "Notes": ""
+      },
+      {
+        "Id": "8375d17e-5386-4495-8ba7-9c4761f18275",
+        "From": {
+          "Some": "«Česká Pošta»"
+        },
+        "To": "«Česká Pošta»",
+        "Assets": [],
+        "Notes": "konec hry v 18:00"
+      }
+    ],
+    "Credentials": [
+      {
+        "Name": "«Česká Pošta»",
+        "Password": "zlutakravata"
+      },
+      {
+        "Name": "«Banka»",
+        "Password": "zlutakravata"
+      },
+      {
+        "Name": "kapitalisti",
+        "Password": "3.1415"
+      },
+      {
+        "Name": "trolove",
+        "Password": "jirka"
+      },
+      {
+        "Name": "tlj",
+        "Password": "heslo987"
+      },
+      {
+        "Name": "broforce",
+        "Password": "hroch"
+      },
+      {
+        "Name": "komunisti",
+        "Password": "Marx"
+      },
+      {
+        "Name": "katoda",
+        "Password": "anoda"
+      }
+    ],
+    "Mines": [
+      {
+        "Name": "nadrazi",
+        "MineKey": "1-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          11
+        ],
+        "Resources": 39499,
+        "ResourceName": "zelezo",
+        "Yield": 0.0003
+      },
+      {
+        "Name": "drevnik",
+        "MineKey": "2-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          35
+        ],
+        "Resources": 35,
+        "ResourceName": "drevo",
+        "Yield": 0.03
+      },
+      {
+        "Name": "barbora",
+        "MineKey": "3-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          11
+        ],
+        "Resources": 284,
+        "ResourceName": "zelezo",
+        "Yield": 0.004
+      },
+      {
+        "Name": "ali",
+        "MineKey": "4-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          4
+        ],
+        "Resources": 37053,
+        "ResourceName": "balicky z ciny",
+        "Yield": 0.0004
+      },
+      {
+        "Name": "zvonicka",
+        "MineKey": "5.0-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          4
+        ],
+        "Resources": 100000,
+        "ResourceName": "balicky z ciny",
+        "Yield": 0.0004
+      },
+      {
+        "Name": "drevenazvonicka",
+        "MineKey": "5.1-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          11
+        ],
+        "Resources": 7000,
+        "ResourceName": "drevo",
+        "Yield": 0.007
+      },
+      {
+        "Name": "kiruna",
+        "MineKey": "6.0-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          4
+        ],
+        "Resources": 199837,
+        "ResourceName": "zelezo",
+        "Yield": 4E-05
+      },
+      {
+        "Name": "les",
+        "MineKey": "6.1-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          4
+        ],
+        "Resources": 199862,
+        "ResourceName": "drevo",
+        "Yield": 6E-05
+      },
+      {
+        "Name": "prehrada",
+        "MineKey": "7-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          11
+        ],
+        "Resources": 20000,
+        "ResourceName": "ztracene dopisy",
+        "Yield": 0.0007
+      },
+      {
+        "Name": "hasici",
+        "MineKey": "8-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          4
+        ],
+        "Resources": 19581,
+        "ResourceName": "drevo",
+        "Yield": 0.001
+      },
+      {
+        "Name": "internet",
+        "MineKey": "9-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          4
+        ],
+        "Resources": 3906,
+        "ResourceName": "osobni udaje",
+        "Yield": 0.001
+      },
+      {
+        "Name": "autobus",
+        "MineKey": "10-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          4
+        ],
+        "Resources": 2607,
+        "ResourceName": "osobni udaje",
+        "Yield": 0.002
+      },
+      {
+        "Name": "pole",
+        "MineKey": "11-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          8
+        ],
+        "Resources": 522866,
+        "ResourceName": "repka",
+        "Yield": 0.0002
+      },
+      {
+        "Name": "schranka",
+        "MineKey": "12-sajhflkjsafdfafsdf",
+        "Dimensions": [
+          4,
+          47,
+          11
+        ],
+        "Resources": 9629,
+        "ResourceName": "ztracene dopisy",
+        "Yield": 0.001
+      }
+    ]
+  }
+}
