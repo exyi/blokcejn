@@ -177,7 +177,7 @@ module StateManager =
             match file with
             | Some file ->
 
-                IO.File.ReadLines file |> Seq.map (fun l -> serializer.UnPickleOfString<UpdateMsg> l) |> Seq.iter processUpdate
+                IO.File.ReadLines file |> Seq.filter (not << String.IsNullOrWhiteSpace) |> Seq.map (fun l -> serializer.UnPickleOfString<UpdateMsg> l) |> Seq.iter processUpdate
                 ()
             | _ -> ()
             savefile <- file

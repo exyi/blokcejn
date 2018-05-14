@@ -37,14 +37,18 @@ module Hasher =
         let data = sha.ComputeHash(Encoding.UTF8.GetBytes(sprintf "%s|%A" mineName indices))
         let number = BitConverter.ToUInt64 (data, 0)
 
-        if mineName = "internet" then
+        match mineName with
+        | "internet" | "autobus" ->
             korpus_hesel.Value.[abs (int number) % korpus_hesel.Value.Length]
-        else if mineName = "knihovna" then
+        | "zvonicka" | "les" | "kiruna" ->
             korpus1.Value.[abs (int number) % korpus1.Value.Length] |> stripString
-        else if mineName = "whatever" then
+        | "hasici" | "ali" ->
             korpus2.Value.[abs (int number) % korpus2.Value.Length] |> stripString
-        else
-            Seq.unfold (fun (n: uint64) -> Some (('A' + char (n % uint64 26)), (n / uint64 26))) number |> Seq.take 3 |> Seq.toArray |> String
+        | "drevnik" ->
+            [| "hroch"; "zuzka"; "dalibor"; "lucka"; "tomas"; "lucka"; "janek"; "petr"; "vojta"; "jirka"; "janek"; "marek"; "risa"; "honza"; "majda"; "peta"; "jirka"; "terka"; "standa"; "ondra"; "honza"; "adam"; "honza"; "karel"; "ondra"; "honza"; "sejsel"; "dominik"; "anicka"; "david"; "filip"; "dan"; "maruska"; "jenda"; "petr" |].[indices |> Seq.head]
+        | _ ->
+            let len = if mineName = "pole" then 6 else 3
+            Seq.unfold (fun (n: uint64) -> Some (('A' + char (n % uint64 26)), (n / uint64 26))) number |> Seq.take len |> Seq.toArray |> String
 
     let getCoords mineName teamName (indices: int list) index =
         use sha = SHA1.Create()

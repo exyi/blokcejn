@@ -71,7 +71,7 @@ type Startup() =
                                 str.WriteLine((sprintf "[%d]\t" i) + String.Join("\t", [0..(cols-1)] |> Seq.map (fun j -> getCode [i; j])))
                         | num :: coords ->
                             for i in 0..(num-1) do
-                                fprintfn str "P %d:\n" i
+                                fprintfn str "P %d (%s):\n" i name
                                 printTable (fun c -> getCode <| i :: c) coords
                                 fprintfn str "\n"
 
@@ -79,18 +79,27 @@ type Startup() =
 
                     printTable (fun c -> Hasher.mineEntry name c) ((StateManager.getState().Mines |> Array.find (fun m -> m.Name = name)).Dimensions |> Array.toList)
 
-                    let wordWidth = str.ToString().Split([| '\t'; '\n'|] ) |> Seq.map (fun s -> s.Length) |> Seq.max
+                    let wordWidth = str.ToString().Split([| '\n'|]) |> Seq.map(fun t -> t.Split('\t')) |> Seq.collect(fun t -> if t.Length > 1 then t else [||]) |> Seq.map (fun s -> s.Length) |> Seq.max
                     let lines = str.ToString().Split('\n') |> Seq.map (fun line ->
-                        let result = new StringWriter()
-                        for w in line.Split('\t') do
-                            result.Write w
-                            String(' ', wordWidth - w.Length + 2) |> result.Write
-                        result.ToString()
+                        if line.Contains("\t") then
+                            let result = new StringWriter()
+                            for w in line.Split('\t') do
+                                result.Write w
+                                String(' ', wordWidth - w.Length + 2) |> result.Write
+                            result.ToString()
+                        else line
                     )
 
                     context.Response.WriteAsync (String.Join ('\n', lines))
 
+                else if context.Request.Path.Value = "/stats" then
+                    use sb = new StringWriter()
 
+                    let minableResources = StateManager.getState().Mines |> Seq.groupBy (fun m -> m.ResourceName) |> Seq.map(fun (n, m) -> (n, m |> Seq.sumBy (fun a -> a.Resources))) |> Seq.toArray
+
+                    fprintf sb "mine resources - %A" minableResources
+
+                    context.Response.WriteAsync (sb.ToString())
                 else Task.CompletedTask
             else
                 Task.CompletedTask

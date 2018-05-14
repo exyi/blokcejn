@@ -1,0 +1,32 @@
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"nadrazi","MineKey":"1-sajhflkjsafdfafsdf","Dimensions":[4,47,11],"Resources":40000,"ResourceName":"zelezo","Yield":0.0003}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"drevnik","MineKey":"2-sajhflkjsafdfafsdf","Dimensions":[35],"Resources":4000,"ResourceName":"drevo","Yield":0.03}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"barbora","MineKey":"3-sajhflkjsafdfafsdf","Dimensions":[4,47,11],"Resources":4000,"ResourceName":"zelezo","Yield":0.004}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"ali","MineKey":"4-sajhflkjsafdfafsdf","Dimensions":[4,47,4],"Resources":40000,"ResourceName":"balicky z ciny","Yield":0.0004}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"zvonicka","MineKey":"5.0-sajhflkjsafdfafsdf","Dimensions":[4,47,4],"Resources":100000,"ResourceName":"balicky z ciny","Yield":0.0004}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"drevenazvonicka","MineKey":"5.1-sajhflkjsafdfafsdf","Dimensions":[4,47,11],"Resources":7000,"ResourceName":"drevo","Yield":0.007}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"kiruna","MineKey":"6.0-sajhflkjsafdfafsdf","Dimensions":[4,47,4],"Resources":200000,"ResourceName":"zelezo","Yield":0.00004}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"les","MineKey":"6.1-sajhflkjsafdfafsdf","Dimensions":[4,47,4],"Resources":200000,"ResourceName":"drevo","Yield":0.00006}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"prehrada","MineKey":"7-sajhflkjsafdfafsdf","Dimensions":[4,47,11],"Resources":20000,"ResourceName":"ztracene dopisy","Yield":0.0007}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"hasici","MineKey":"8-sajhflkjsafdfafsdf","Dimensions":[4,47,4],"Resources":20000,"ResourceName":"drevo","Yield":0.001}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"internet","MineKey":"9-sajhflkjsafdfafsdf","Dimensions":[4,47,4],"Resources":4000,"ResourceName":"osobni udaje","Yield":0.001}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"autobus","MineKey":"10-sajhflkjsafdfafsdf","Dimensions":[4,47,4],"Resources":3000,"ResourceName":"osobni udaje","Yield":0.002}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"pole","MineKey":"11-sajhflkjsafdfafsdf","Dimensions":[4,47,8],"Resources":530000,"ResourceName":"repka","Yield":0.0002}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"NewMine","Item":{"Name":"schranka","MineKey":"12-sajhflkjsafdfafsdf","Dimensions":[4,47,11],"Resources":10000,"ResourceName":"ztracene dopisy","Yield":0.001}}}
+
+
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AddTeam","name":"«Česká Pošta»","password":"zlutakravata","account":{"Assets":[]}}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"AddTeam","name":"«Banka»","password":"zlutakravata","account":{"Assets":[]}}}
+
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"nadrazi"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"drevnik"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"barbora"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"ali"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"zvonicka"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"drevenazvonicka"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"kiruna"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"prehrada"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"hasici"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"internet"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"autobus"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"pole"}}
+{"FsPickler":"4.0.0","type":"Model.UpdateMsg","value":{"Case":"DiscoverMine","teamName":"«Česká Pošta»","mineName":"schranka"}}
